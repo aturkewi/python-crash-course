@@ -48,3 +48,35 @@ else:
 print(string)
 ```
 Scoping: Vars are not scoped inside if block:
+
+### Dictionaries
+
+Python 3.7+ dictionaries retain order when iterating.
+
+Deleting from a list: `del alien_0['points']`
+`del` must be at the beginning of the line.
+
+Key error if key is missing:
+```python
+dict = {}
+dict['horse']
+# Traceback (most recent call last):
+#   File "<stdin>", line 1, in <module>
+# KeyError: 'horse'
+```
+`.get()` returns `None` if it's not there and can take a default:
+```python
+dict.get('horse')
+# None
+dict.get('horse', 'big')
+# 'big'
+```
+
+Looping through a list:
+```python
+for name, language in favorite_languages.items():
+  print(f"{name} prefers {language}")
+```
+
+`.keys()` returns a list of the dict keys.
+`.values()` returns a list of dict values.
