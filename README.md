@@ -94,3 +94,65 @@ while active:
     continue
   print('something cool')
 ```
+
+### Functions
+
+```python
+def function_name(arg_1, arg_2='default value'):
+  """
+  Docstring - Used to define function
+  Python looks for this when auto-generating docs
+  """
+  return {arg_1: arg_1, arg_2: arg_2}
+```
+
+This can be called multiple ways:
+Args in order: `function_name('apple', 'candy')`
+Keyword args: `function_name(arg_1='apply', arg_2='candy')`
+
+Seems a little dangerous? Now _any_ arg names cannot be changed without risking breaking current implementations. **All arg names must be treated as keyword args.**
+
+Note: If data is passed into a function (e.g. a list) it is modified outside of the func because it is the same instance of data (similar to Ruby).
+
+`def func(*any_number_of_args):` - Returns a tuple of args.
+`def func(**any_number_of_args)` - Returns a dict of args
+
+### Importing
+
+```python
+# pizza.py
+def make_pizza(some_args):
+
+```
+
+#### Option 1: Import everything in a module scope
+
+```python
+import pizza
+# aliasing
+import pizza_two as p2
+
+# Need to specify module
+pizza.make_pizza(16, 'pineapple', 'ham')
+```
+
+#### Option 2: Only import some functions
+
+```python
+from pizza import make_pizza, func2
+# Aliasing...
+from pizza_two import make_pizza as make_pizza_two
+
+# No need to specify module
+make_pizza(16, 'pineapple', 'ham')
+```
+
+#### Option 3: Import all functions to new module
+
+```python
+from pizza import *
+
+make_pizza(16, 'pineapple', 'ham')
+```
+
+**Careful with this one. This could cause unintended collisions of duplicate names.**
