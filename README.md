@@ -80,3 +80,17 @@ for name, language in favorite_languages.items():
 
 `.keys()` returns a list of the dict keys.
 `.values()` returns a list of dict values.
+
+### While loop
+
+```python
+active = True
+while active:
+  if condition:
+    # Fully break out of the loop
+    break
+  if condition_2:
+    # Restart the loop block
+    continue
+  print('something cool')
+```
