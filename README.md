@@ -119,6 +119,13 @@ Note: If data is passed into a function (e.g. a list) it is modified outside of 
 
 ### Importing
 
+Importing a class:
+```python
+from car import Car
+```
+
+Importing function(s)
+
 ```python
 # pizza.py
 def make_pizza(some_args):
@@ -156,3 +163,57 @@ make_pizza(16, 'pineapple', 'ham')
 ```
 
 **Careful with this one. This could cause unintended collisions of duplicate names.**
+
+### Classes
+
+Classes are CamelCase
+Every class should have a doc string immediately following class def
+Import from standard libs first, then a blank line, then import from custom libs
+
+```python
+class Dog:
+  """Dog class"""
+  def __init__(self, name, age):
+    """
+    Init, a special method name used when creating a new instance
+    `self` is automatically passed in by Python, this is not an arg that we need to pass
+    """
+    self.name = name
+    self.age = age
+
+  def sit(self):
+    """
+    Same note, `self` is auto passed in by Python so we can access the instance
+    """
+    print(f"{self.name} is now sitting.")
+```
+
+Attrs can always be directly accessed (e.g. `dog.name = "new name"`). Programers need to know not to use these if there is a method like `def update_name(new_name):` or something like that. 
+
+Inheritance:
+```python
+# Car must already be defined (in the same file?)
+class ElectricCar(Car):
+  """ElectricCar inherits from Car"""
+  def __init__(self, make, model, year):
+    # Calling Car's `__init__` method. Note, still don't need to pass in `self`
+    super().__init__(make, model, year)
+```
+
+#### Importing - Same as for functions...
+
+Importing a class `from car import Car`
+
+Multiple classes can be in a single module: `from car import Car, ElectricCar, Battery`
+
+Can also add aliases: `from car import ElectricCar as EC`
+
+Importing all classes from a module:
+```python
+import car
+
+my_car = car.Car('volkswagen', 'beetle', 1999)
+my_electric_car = car.ElectricCar('speedy', 'golf cart', 2010)
+```
+
+All classes can be imported directly with `from car import *`, but it's not recommended (name collisions again).
