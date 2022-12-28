@@ -217,3 +217,25 @@ my_electric_car = car.ElectricCar('speedy', 'golf cart', 2010)
 ```
 
 All classes can be imported directly with `from car import *`, but it's not recommended (name collisions again).
+
+### Exceptions
+
+```python
+try:
+  print(5/0)
+except ZeroDivisionError:
+  print('you cannot divide by zero')
+except FileNotFoundError:
+  pass # allows us to fail without doing anything. needed for blank blocks
+else:
+  # do something here in case an error was not raised
+```
+
+### JSON
+
+```python
+import json
+
+json.dump(data, file) # writes data to a file
+json.load(file) # loads json data from a file
+```
