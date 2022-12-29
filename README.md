@@ -239,3 +239,55 @@ import json
 json.dump(data, file) # writes data to a file
 json.load(file) # loads json data from a file
 ```
+
+### Testing
+
+```python
+import unittest
+
+# Must inherit from `unittest.TestCase`
+class NameOfTestClass(unittest.TestCase):
+  """Blurb about what this test class is for"""
+
+  # Function name MUST start with 'test_' to be run
+  def test_first_name_last_name(self):
+    """('janis', 'joplin') equals 'Janis Joplin'"""
+    formatted_name = get_formatted_name('janis', 'joplin')
+    self.assertEqual(formatted_name, 'Janis Joplin')
+
+# Add this to run a single file
+if __name__ == '__main__':
+  unittest.main()
+```
+
+Other test methods:
+- `assertEqual(a, b)`
+- `assertNotEqual(a, b)`
+- `assertTrue(x)`
+- `assertFalse(x)`
+- `assertIn(item, list)`
+- `assertNotIn(item, list)`
+
+More assertions [here](https://docs.python.org/3/library/unittest.html#unittest.TestCase)
+
+Setting up a test:
+```python
+def setup(self):
+  question = "What was your first language?"
+  self.my_survey = AnonymousSurvey(question)
+  self.responses = ['English', 'Spanish', 'Hebrew']
+
+def test_store_single_response(self):
+  """Test that a single response is stored properly."""
+  self.my_survey.store_response(self.responses[0])
+  self.assertIn(self.responses[0], self.my_survey.responses)
+
+def test_store_three_responses(self):
+  """Test that three individual responses are stored properly."""
+  for response in self.responses:
+    self.my_survey.store_response(response)
+  for response in self.responses:
+    self.assertIn(response, self.my_survey.responses)
+```
+
+Access `self` like a dictionary?
